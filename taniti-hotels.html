@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Generic Co - Web 5.0 Template</title>
+    <title>Taniti Island - Web 5.0 Template</title>
     <meta title="" content="">
     <meta name="description" content="">
     <meta name="author" content="Josh Shirley">
@@ -20,16 +20,16 @@
     <link rel="apple-touch-icon" href="media/favicon/apple-touch-icon.png">
 
     <!-- External stylesheet -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/structure.css">
+    <link rel="stylesheet" href="css/icons.css">
 
-    <!-- <link rel="stylesheet" href="css/style.css?v=1.0"> -->
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Pre Load Javascripts -->
+    <script src="data/hotels.js"></script>
 
+    <script src="js/icons.js"></script>
 
 </head>
 
@@ -38,7 +38,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html">Generic Co</a>
+                <a href="index.html">Taniti Island</a>
             </div>
 
             <nav class="menu" id="mainMenu">
@@ -58,15 +58,65 @@
     </header>
 
     <main>
-        <div class="">
-            <h1>Generic Template</h1>
-        </div>
 
-        <section>
-            <h1>Section - Full Width</h1>
+        <h1>Taniti's Best Hotels</h1>
 
+        <section id="filters" class="mb-3">
+            <form name="hotelFilters">
+                <div class="row">
+                    <label>Sort</label>
+                    <button name="sortRatings" class="col">Rating</button>
+                    <button name="sortPrices" class="col">Price</button>
+                    <button name="sortLocations" class="col">Location</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="list" id="hotels">
+
+            <a href="taniti-hotel.html?id=0001" class="blank">
+                <div class="row mb-3" id="hotel-001">
+
+                    <div class="col one">
+                        <div class="imageHolder small">
+                            <img src="media/hotels/mandarin/bangkok-16-hotel-the-authors-wing-dusk-01.webp" alt="The Mandarin" style="height:-webkit-fill-available;" />
+                        </div>
+                    </div>
+
+                    <div class="col two">
+                        <div class="hotelName">
+                            The Mandarin Hotel Taniti
+                        </div>
+
+                        <div class="location">
+                            Coco Beach
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col rating">
+                                <span class="score" id="score">4.9</span>
+                            </div>
+
+                            <div class="col prices">
+                                <span class="text">From</span>
+                                <span class="price" id="price">$259</span>
+                            </div>
+
+                            <div class="col linkDetails">
+                                <span class="booking">Book</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </a>
 
         </section>
+        <script>
+            hotels.load();
+        </script>
 
     </main>
 
