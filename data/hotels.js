@@ -659,6 +659,7 @@ const hotels = {
             id: 18,
             name: "Villa Vahineria",
             type: "Home",
+            rating: 5.0,
             reviews: 59,
             stars: 4,
             price: 236,
@@ -688,6 +689,7 @@ const hotels = {
             id: 19,
             name: "Villa Infinity Dream",
             type: "Home",
+            rating: 5.0,
             reviews: 45,
             stars: 4,
             price: 356,
@@ -721,6 +723,7 @@ const hotels = {
             id: 20,
             name: "Villa Maere Villa",
             type: "Home",
+            rating: 5.0,
             reviews: 6,
             stars: 4,
             price: 295,
@@ -826,6 +829,7 @@ const hotels = {
             id: 24,
             name: "Fare Hanalei Dream",
             type: "Home",
+            rating: 5.0,
             reviews: 162,
             stars: 3.5,
             price: 259,
@@ -867,6 +871,7 @@ const hotels = {
             id: 25,
             name: "Condo Moana Nui",
             type: "Home",
+            rating: 5.0,
             reviews: 25,
             stars: 3.5,
             price: 289,
@@ -908,6 +913,7 @@ const hotels = {
             id: 26,
             name: "Eucalyptus Treehouse",
             type: "Home",
+            rating: 5.0,
             reviews: 70,
             stars: 3.5,
             price: 95,
@@ -941,6 +947,7 @@ const hotels = {
             id: 27,
             name: "Wendy Location",
             type: "Home",
+            rating: 5.0,
             reviews: 96,
             stars: 3.5,
             price: 79,
@@ -1021,30 +1028,43 @@ const hotels = {
     sort: function(key) {
         if (Object.keys(this.list[0]).includes(key)) {
             if (key == "name") {
-                hotels.list.sort((a, b) => (a.name > b.name ? 1 : -1));
+                this.list.sort((a, b) => (a.name > b.name ? 1 : -1));
             } else if (key == "price") {
-                hotels.list.sort((a, b) => (a.price < b.price) ? 1 : -1);
+                this.list.sort((a, b) => (a.price < b.price) ? 1 : -1);
             } else if (key == "location") {
-                hotels.list.sort((a, b) => (a.location > b.location ? 1 : -1));
+                this.list.sort((a, b) => (a.location > b.location ? 1 : -1));
+            } else if (key == "rating") {
+                this.list.sort((a, b) => (a.rating < b.rating ? 1 : -1));
             }
             this.load();
+            // change the button class and value;
         }
     },
     reverse: function(key) {
         if (Object.keys(this.list[0]).includes(key)) {
             if (key == "name") {
-                hotels.list.sort((a, b) => (a.name < b.name ? 1 : -1));
+                this.list.sort((a, b) => (a.name < b.name ? 1 : -1));
             } else if (key == "price") {
-                hotels.list.sort((a, b) => (a.price > b.price) ? 1 : -1);
+                this.list.sort((a, b) => (a.price > b.price) ? 1 : -1);
             } else if (key == "location") {
-                hotels.list.sort((a, b) => (a.location < b.location ? 1 : -1));
+                this.list.sort((a, b) => (a.location < b.location ? 1 : -1));
+            } else if (key == "rating") {
+                this.list.sort((a, b) => (a.rating > b.rating ? 1 : -1));
             }
             this.load();
         }
     },
+    activeFilters: [],
     load: function() {
         document.getElementById(this.target).innerHTML = "";
-        this.list.forEach(hotel => {
+        // filter the list        
+        if (this.activeFilters.length > 0) {
+            var arr = this.list.filter(hotel => this.activeFilters.includes(hotel.location));
+        } else {
+            var arr = this.list;
+        }
+
+        arr.forEach(hotel => {
             hotels.hotelBlock(hotel.id);
         });
     },
@@ -1138,7 +1158,10 @@ const hotels = {
         span1.innerHTML = "From";
         var span2 = document.createElement("span");
         span2.classList.add("price");
-        span2.innerHTML = nightlyPrice;
+
+        var formatter = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+        span2.innerHTML = formatter.format(nightlyPrice);
+
         div.appendChild(span1);
         div.appendChild(span2);
         return div;
@@ -1160,11 +1183,99 @@ const hotels = {
         a.classList.add("score");
         a.id = "score";
         if (userRating != undefined) {
-            a.innerHTML = userRating;
+            a.innerHTML = userRating.toFixed(1);
         } else {
             a.innerHTML = "5.0";
         }
         div.appendChild(a);
         return div;
+    },
+    sorts: function(key, direction) {
+        var t = document.getElementsByName(key)[0];
+        if (direction == "ascending") {
+            this.sort(key);
+            t.value = "descending";
+            t.classList.remove("up");
+            t.classList.add("down");
+        } else {
+            this.reverse(key);
+            t.value = "ascending";
+            t.classList.remove("down");
+            t.classList.add("up");
+        }
+    },
+    filters: function(key, status) {
+        var t = document.getElementsByName(key)[0];
+        var d = document.getElementsByName("hotelFilters")[0].querySelector(".filterList");
+        if (status == "open") {
+            t.classList.remove("open");
+            t.classList.add("closed");
+            t.value = "closed";
+            d.classList.remove("show");
+            d.classList.add("hide");
+        } else {
+            t.classList.remove("closed");
+            t.classList.add("open");
+            t.value = "open";
+            d.classList.remove("hide");
+            d.classList.add("show");
+        }
+    },
+    filterLocation: function(value) {
+        this.activeFilters = [];
+        var d = document.getElementsByName("hotelFilters")[0].querySelector(".filterList");
+        d.classList.remove("show");
+        d.classList.add("hide");
+        var inputs = document.querySelectorAll(".filterList input:checked");
+        inputs.forEach(input => this.activeFilters.push(input.value));
+        this.load();
+    },
+    buttons: function() {
+        var sorts = document.querySelectorAll(".filters button.sort");
+        sorts.forEach(button => {
+            button.addEventListener("click", event => {
+                this.sorts(button.name, button.value);
+            });
+        });
+        var filters = document.querySelectorAll(".filters button.filter");
+        filters.forEach(button => {
+            button.addEventListener("click", event => {
+                this.filters(button.name, button.value);
+            });
+        });
+        var loc = document.querySelectorAll(".filterList input[name='locations']");
+        loc.forEach(input => {
+            input.addEventListener("change", event => {
+                this.filterLocation();
+            });
+        });
+    },
+    locationDisplay: function() {
+        const distinct = [new Set(this.list.map(hotel => hotel.location))];
+        const form = document.getElementsByName("hotelFilters")[0];
+
+        var dd = document.createElement("div");
+        dd.classList.add("hide");
+        dd.classList.add("filterList");
+
+        distinct[0].forEach(location => {
+            var id = "loc" + location.replaceAll(" ", "");
+
+            var input = document.createElement("input");
+            input.type = "checkbox";
+            input.name = "locations";
+            input.value = location;
+            input.id = id;
+
+            var label = document.createElement("label");
+            label.setAttribute("for", id);
+            label.appendChild(input);
+
+            label.appendChild(document.createTextNode(location));
+
+            dd.appendChild(label);
+        });
+
+        form.appendChild(dd);
     }
 }

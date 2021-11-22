@@ -63,60 +63,16 @@
 
         <section id="filters" class="mb-3">
             <form name="hotelFilters">
-                <div class="row">
-                    <label>Sort</label>
-                    <button name="sortRatings" class="col">Rating</button>
-                    <button name="sortPrices" class="col">Price</button>
-                    <button name="sortLocations" class="col">Location</button>
+                <div class="row filters">
+                    <button type="button" name="rating" class="col sort sortRatings" value="ascending">Rating</button>
+                    <button type="button" name="price" class="col sort sortPrices" value="descending">Price</button>
+                    <button type="button" name="location" class="col filter filterLocations" value="closed">Location</button>
                 </div>
             </form>
         </section>
 
         <section class="list" id="hotels">
-
-            <a href="taniti-hotel.html?id=0001" class="blank">
-                <div class="row mb-3" id="hotel-001">
-
-                    <div class="col one">
-                        <div class="imageHolder small">
-                            <img src="media/hotels/mandarin/bangkok-16-hotel-the-authors-wing-dusk-01.webp" alt="The Mandarin" style="height:-webkit-fill-available;" />
-                        </div>
-                    </div>
-
-                    <div class="col two">
-                        <div class="hotelName">
-                            The Mandarin Hotel Taniti
-                        </div>
-
-                        <div class="location">
-                            Coco Beach
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col rating">
-                                <span class="score" id="score">4.9</span>
-                            </div>
-
-                            <div class="col prices">
-                                <span class="text">From</span>
-                                <span class="price" id="price">$259</span>
-                            </div>
-
-                            <div class="col linkDetails">
-                                <span class="booking">Book</span>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </a>
-
         </section>
-        <script>
-            hotels.load();
-        </script>
 
     </main>
 
@@ -146,6 +102,12 @@
     <!-- Final Load Javascripts -->
     <!-- Majority of js code should go here -->
     <script src="js/footer.js"></script>
+
+    <script>
+        hotels.sort("price");
+        hotels.locationDisplay();
+        hotels.buttons();
+    </script>
 
     <!--
         Requirements should only be used on the settings page.
