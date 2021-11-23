@@ -5,12 +5,12 @@ let Menu = {
         m.appendChild(this.build());
     },
     links: [
-        { href: "taniti-map.html", text: "Map" },
-        { href: "taniti-hotels.html", text: "Hotels" },
-        { href: "taniti-beaches.html", text: "Beaches" },
-        { href: "taniti-transit.html", text: "Transit" },
-        { href: "taniti-laws.html", text: "Laws" },
-        { href: "search.html", text: "Search" }
+        { href: "taniti-map.html", text: "Map", icon: "map" },
+        { href: "taniti-hotels.html", text: "Hotels", icon: "hotel" },
+        { href: "taniti-beaches.html", text: "Beaches", icon: "beach" },
+        { href: "taniti-transit.html", text: "Transit", icon: "bus" },
+        { href: "taniti-laws.html", text: "Laws", icon: "gavel" },
+        { href: "search.html", text: "Search", icon: "search" }
     ],
     build: function() {
         var ul = document.createElement("ul");
@@ -18,11 +18,16 @@ let Menu = {
             var li = document.createElement("li");
             var el = document.createElement("a");
             el.href = link.href;
-            el.innerHTML = link.text;
+            var text = document.createTextNode(link.text);
+            el.appendChild(this.icon(link.icon));
+            el.appendChild(text);
             li.appendChild(el);
             ul.appendChild(li);
         });
         return ul;
+    },
+    icon: function(src) {
+        return icon.insert(src);
     },
     toggle: function() {
         var m = document.getElementById("mainMenu");
