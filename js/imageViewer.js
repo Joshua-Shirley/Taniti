@@ -127,5 +127,12 @@ const imageViewer = {
         div.appendChild(divL);
 
         return div;
+    },
+    createEnlargedDiv: function() {
+        var div = document.createElement("div");
+        div.classList.add("enlarged");
+
+
     }
+
 };

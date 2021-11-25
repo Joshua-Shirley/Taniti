@@ -1,34 +1,45 @@
 const imageGallery = {
     // data image list
-    array = [],
-    targetElementID = "images",
+    array: [],
+    targetElementID: "images",
 
-    // create the main image div
-
-
-    // 
-    init: function() {
-
+    // create the main image div     
+    init: function(imageArray) {
+        this.array = [...imageArray];
+        this.build();
     },
-
-
     build: function() {
         // data array
         var el = document.getElementById(this.targetElementID);
         el.innerHTML = "";
-
+        el.appendChild(this.mainImage());
+        el.appendChild(this.thumbNails());
+    },
+    mainImage: function() {
         var main = document.createElement("div");
+        main.classList.add("mainImage");
+        main.appendChild(this.img(0));
 
-
+        return main;
+    },
+    thumbNails: function() {
         var thumbs = document.createElement("div");
+        thumbs.classList.add("thumbnails");
+        var thumbDiv = document.createElement("div");
+        thumbDiv.classList.add("center");
 
+        for (var i = 0; i < this.array.length; i++) {
+            thumbDiv.appendChild(this.img(i));
+        }
+        thumbs.appendChild(thumbDiv);
 
-        el.appendChild(main);
-        el.appendChild(thumbs);
-
+        return thumbs;
+    },
+    img: function(index) {
+        var img = document.createElement("img");
+        img.src = this.array[index].url;
+        img.alt = this.array[index].alt;
+        return img;
     }
 
 }
-
-
-imageGallery.init();

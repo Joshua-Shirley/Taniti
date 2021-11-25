@@ -32,6 +32,7 @@
 
     <script src="js/imageGallery.js"></script>
     <script src="js/imageViewer.js"></script>
+
 </head>
 
 <body>
@@ -61,19 +62,9 @@
     <main>
 
         <section id="images">
-            <div class="mainImage">
-                <img src="media/hotels/hilton/89dbae32_z.webp" alt="Hilton Hotel Placeholder Image">
-            </div>
-
-            <div class="thumbnails">
-                <div class="center">
-                    <img src="media/hotels/hilton/25268809_z.webp" alt="" />
-                    <img src="media/hotels/hilton/89dbae32_z.webp" alt="" />
-                    <img src="media/hotels/hilton/w3837h1832x1y0-5c904bb0_z.webp" alt="" />
-                    <img src="media/hotels/hilton/w3838h1862x1y0-6ceb8f1f_z.webp" alt="" />
-                    <img src="media/hotels/hilton/w3838h2162x0y0-c16c9fd6_z.webp" alt="" />
-                </div>
-            </div>
+            <script>
+                imageGallery.init(hotels.list[1].images);
+            </script>
         </section>
 
         <section id="title">
