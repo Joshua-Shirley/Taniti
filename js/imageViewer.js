@@ -1,4 +1,4 @@
-// the imageGalley should build the gallery HTML and insert into DOM
+// the imageGallery should build the gallery HTML and insert into DOM
 
 // the imageViewer will respond to the users interactions
 //      imageViewer should work without the imageGalley
@@ -12,7 +12,6 @@ const imageViewer = {
     },
     list: [],
     divGallery: "",
-    divOverlay: "",
     divMain: "",
     divThumbs: "",
     imageMain: "",
@@ -42,8 +41,11 @@ const imageViewer = {
                 })
         });
 
+        // Add an overlay
+        document.querySelector('#' + this.elementIds.parentId).prepend(imageViewer.createOverlay());
+
         // click left / click right
-        var clickables = document.querySelectorAll("#images div.overlay div.icon")
+        var clickables = document.querySelectorAll('#' + this.elementIds.parentId + " .overlay .icon");
         clickables.forEach(div => {
             div.addEventListener("click", function(e) {
                 var e = div.getAttribute("data-button-type");
@@ -90,5 +92,40 @@ const imageViewer = {
         // enlarge main image
         var lg = document.querySelector(".enlarged");
         lg.appendChild(this.imageMain.cloneNode(true));
+    },
+    createOverlay: function() {
+        var div = document.createElement("div");
+        div.classList.add("overlay");
+
+        // create the right icon
+        //<div class="icon" data-button-type="scrollBack"></div>
+        var divR = document.createElement("div");
+        divR.classList.add("icon");
+        divR.setAttribute("data-button-type", "scrollBack");
+        divR.appendChild(icon.svg("chevron-right"));
+
+        div.appendChild(divR);
+
+        // setup the middle space
+        //<div class="icon" date-button-type="enlarge"></div>
+        var divE = document.createElement("div");
+        divE.classList.add("icon");
+        divE.classList.add("enlarge");
+        divE.setAttribute("data-button-type", "enlarge");
+        divE.appendChild(icon.svg("search-plus"));
+
+        div.appendChild(divE);
+
+
+        // create the left icon
+        //<div class="icon" data-button-type="scrollForward"></div>
+        var divL = document.createElement("div");
+        divL.classList.add("icon");
+        divL.setAttribute("data-button-type", "scrollForward");
+        divL.appendChild(icon.svg("chevron-left"));
+
+        div.appendChild(divL);
+
+        return div;
     }
 };
