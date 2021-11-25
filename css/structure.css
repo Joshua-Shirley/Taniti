@@ -350,4 +350,10 @@ button {
         width: var(--lg);
         margin: 0 auto;
     }
+    nav.menu span.icon {
+        padding: 0;
+    }
+    nav.menu span.icon svg {
+        height: 16px;
+    }
 }

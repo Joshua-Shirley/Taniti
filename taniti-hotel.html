@@ -20,13 +20,9 @@
     <link rel="apple-touch-icon" href="media/favicon/apple-touch-icon.png">
 
     <!-- External stylesheet -->
-
-
-
+    <!-- Internal stylesheet -->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/structure.css">
-
-    <!-- <link rel="stylesheet" href="css/style.css?v=1.0"> -->
 
     <link rel="stylesheet" href="css/hotels.css">
 
@@ -34,6 +30,7 @@
     <script src="data/hotels.js"></script>
     <script src="js/icons.js"></script>
 
+    <script src="js/imageViewer.js"></script>
 </head>
 
 <body>
@@ -63,42 +60,41 @@
     <main>
 
         <section id="images">
+            <div class="enlarged"></div>
             <div class="overlay">
-                <a href="">
-                    <div class="icon iconLeft">
-                        <svg aria-hidden="true" focusable="false" data-icon="chevron-circle-left" class="chevron-circle-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+
+                <div class="icon" data-button-type="scrollBack">
+                    <svg aria-hidden="true" focusable="false" data-icon="chevron-circle-left" class="chevron-circle-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path fill="currentColor" d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z"></path>
                     </svg>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="icon iconRight">
-                        <svg aria-hidden="true" focusable="false" data-icon="chevron-circle-right" class="chevron-circle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                </div>
+
+                <div class="icon enlarge" data-button-type="enlarge">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search-plus" class="svg-inline--fa fa-search-plus fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="currentColor" d="M304 192v32c0 6.6-5.4 12-12 12h-56v56c0 6.6-5.4 12-12 12h-32c-6.6 0-12-5.4-12-12v-56h-56c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h56v-56c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v56h56c6.6 0 12 5.4 12 12zm201 284.7L476.7 505c-9.4 9.4-24.6 9.4-33.9 0L343 405.3c-4.5-4.5-7-10.6-7-17V372c-35.3 27.6-79.7 44-128 44C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208c0 48.3-16.4 92.7-44 128h16.3c6.4 0 12.5 2.5 17 7l99.7 99.7c9.3 9.4 9.3 24.6 0 34zM344 208c0-75.2-60.8-136-136-136S72 132.8 72 208s60.8 136 136 136 136-60.8 136-136z">
+                        </path>
+                    </svg>
+                </div>
+
+                <div class="icon" data-button-type="scrollForward">
+                    <svg aria-hidden="true" focusable="false" data-icon="chevron-circle-right" class="chevron-circle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path fill="currentColor" d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z"></path>
                     </svg>
-                    </div>
-                </a>
+                </div>
+
             </div>
             <div class="mainImage">
                 <img src="media/hotels/hilton/89dbae32_z.webp" alt="Hilton Hotel Placeholder Image">
             </div>
 
             <div class="thumbnails">
-                <img src="media/hotels/hilton/25268809_z.webp" alt="" />
-                <img src="media/hotels/hilton/89dbae32_z.webp" alt="" />
-                <img src="media/hotels/hilton/w3837h1832x1y0-5c904bb0_z.webp" alt="" />
-                <img src="media/hotels/hilton/w3838h1862x1y0-6ceb8f1f_z.webp" alt="" />
-                <img src="media/hotels/hilton/w3838h2162x0y0-c16c9fd6_z.webp" alt="" />
-                <img src="media/hotels/hilton/25268809_z.webp" alt="" />
-                <img src="media/hotels/hilton/89dbae32_z.webp" alt="" />
-                <img src="media/hotels/hilton/w3837h1832x1y0-5c904bb0_z.webp" alt="" />
-                <img src="media/hotels/hilton/w3838h1862x1y0-6ceb8f1f_z.webp" alt="" />
-                <img src="media/hotels/hilton/w3838h2162x0y0-c16c9fd6_z.webp" alt="" />
-                <img src="media/hotels/hilton/25268809_z.webp" alt="" />
-                <img src="media/hotels/hilton/89dbae32_z.webp" alt="" />
-                <img src="media/hotels/hilton/w3837h1832x1y0-5c904bb0_z.webp" alt="" />
-                <img src="media/hotels/hilton/w3838h1862x1y0-6ceb8f1f_z.webp" alt="" />
-                <img src="media/hotels/hilton/w3838h2162x0y0-c16c9fd6_z.webp" alt="" />
+                <div class="center">
+                    <img src="media/hotels/hilton/25268809_z.webp" alt="" />
+                    <img src="media/hotels/hilton/89dbae32_z.webp" alt="" />
+                    <img src="media/hotels/hilton/w3837h1832x1y0-5c904bb0_z.webp" alt="" />
+                    <img src="media/hotels/hilton/w3838h1862x1y0-6ceb8f1f_z.webp" alt="" />
+                    <img src="media/hotels/hilton/w3838h2162x0y0-c16c9fd6_z.webp" alt="" />
+                </div>
             </div>
         </section>
 
@@ -213,6 +209,9 @@
         Requirements should only be used on the settings page.
     <script src="js/requirements.js"></script>
     -->
+    <script>
+        imageViewer.init();
+    </script>
 
     <!-- Inessential Optional Add Ons -->
     <script src="js/scrollTopButton.js"></script>
