@@ -62,6 +62,15 @@ const imageViewer = {
             });
         });
 
+        // Swipe events
+        var swipeable = document.querySelectorAll('#' + this.elementIds.parentId + " .overlay");
+        swipeable.addEventListener("swiped-left", function(e) {
+            imageViewer.scrollBack();
+        });
+        swipeable.addEventListener("swiped-right", function(e) {
+            imageViewer.scrollForward();
+        });
+
     },
     changeMain: function() {
         this.divMain.innerHTML = "";
