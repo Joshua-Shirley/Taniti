@@ -4,8 +4,17 @@ const profile = {
     init: function() {
         // Get the ID reference
         const queryString = window.location.search;
+
+        if (queryString == null || queryString == undefined) {
+            location.href = "taniti-hotels.html";
+        }
+
         const urlParams = new URLSearchParams(queryString);
         const id = parseInt(urlParams.get("id"));
+
+        if (isNaN(id)) {
+            location.href = "taniti-hotels.html";
+        }
 
         // ID to Array Index
         this.index = hotels.findIndex(hotel => hotel.id == id);
