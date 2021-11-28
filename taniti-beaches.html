@@ -21,16 +21,14 @@
 
     <!-- External stylesheet -->
 
-
-
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/structure.css">
+    <link rel="stylesheet" href="css/beaches.css">
 
     <!-- <link rel="stylesheet" href="css/style.css?v=1.0"> -->
 
     <!-- Pre Load Javascripts -->
-    <script src="js/icons.js"></script>
-
+    <script src="data/beaches.js"></script>
 </head>
 
 <body>
@@ -52,21 +50,10 @@
                     <span></span>
                 </a>
             </div>
-
-            <script src="js/menu.js"></script>
         </div>
     </header>
 
     <main>
-        <div class="">
-            <h1>Generic Template</h1>
-        </div>
-
-        <section>
-            <h1>Section - Full Width</h1>
-
-
-        </section>
 
     </main>
 
@@ -95,12 +82,57 @@
 
     <!-- Final Load Javascripts -->
     <!-- Majority of js code should go here -->
+    <script src="js/icons.js"></script>
     <script src="js/footer.js"></script>
+    <script src="js/menu.js"></script>
 
-    <!--
-        Requirements should only be used on the settings page.
-    <script src="js/requirements.js"></script>
-    -->
+    <script>
+        var main = document.querySelector("main");
+
+        beaches.forEach(beach => {
+
+            // Build the section
+            var section = document.createElement("section");
+            section.id = beach.title;
+            var container = document.createElement("div");
+            container.classList.add("container");
+            section.appendChild(container);
+
+            // Build the image div
+            var imageDiv = document.createElement("div");
+            imageDiv.classList.add("imageHolder");
+            var img = document.createElement("img");
+            img.src = beach.images[0].url;
+            img.alt = beach.images[0].alt;
+            imageDiv.appendChild(img);
+            section.prepend(imageDiv);
+
+            // Build the title div
+            var titleDiv = document.createElement("div");
+            titleDiv.classList.add("beachTitle");
+            titleDiv.innerHTML = beach.title;
+            container.appendChild(titleDiv);
+
+            // Build the short desc div
+            var shortDiv = document.createElement("div");
+            shortDiv.classList.add("shortDesc");
+            var p1 = document.createElement("p");
+            p1.innerHTML = beach.shortDesc;
+            shortDiv.appendChild(p1);
+            container.appendChild(shortDiv);
+
+            // Build the desc div
+            var desc = document.createElement("div");
+            desc.classList.add("description");
+            var p2 = document.createElement("p");
+            p2.innerHTML = beach.description;
+            desc.appendChild(p2);
+            container.appendChild(desc);
+
+            main.appendChild(section);
+
+        });
+    </script>
 
     <!-- Inessential Optional Add Ons -->
     <script src="js/scrollTopButton.js"></script>

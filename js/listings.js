@@ -67,7 +67,11 @@ const hotelListings = {
         col1.classList.add("col");
         col1.classList.add("one");
         // append the hotel image
-        col1.appendChild(this.mainImage(hotel.images[0].url, hotel.images[0].alt));
+
+        var max = hotel.images.length;
+        var ran = Math.floor(Math.random() * max);
+
+        col1.appendChild(this.mainImage(hotel.images[ran].url, hotel.images[ran].alt));
         row.appendChild(col1);
 
         // col two

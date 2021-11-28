@@ -64,10 +64,10 @@ const imageViewer = {
 
         // Swipe events
         var swipeable = document.querySelectorAll('#' + this.elementIds.parentId + " .overlay");
-        swipeable.addEventListener("swiped-left", function(e) {
+        document.addEventListener("swiped-left", function(e) {
             imageViewer.scrollBack();
         });
-        swipeable.addEventListener("swiped-right", function(e) {
+        document.addEventListener("swiped-right", function(e) {
             imageViewer.scrollForward();
         });
 
@@ -140,8 +140,6 @@ const imageViewer = {
     createEnlargedDiv: function() {
         var div = document.createElement("div");
         div.classList.add("enlarged");
-
-
     }
 
 };

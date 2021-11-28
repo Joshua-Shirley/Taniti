@@ -141,6 +141,32 @@ button.callToAction {
     background-color: #001f34;
 }
 
+.holder {
+    padding: 1rem;
+}
+
+#ammenities h3 {
+    padding: 0 12px;
+}
+
+#ammenities .row {
+    column-gap: 10%;
+    margin-bottom: 24px;
+}
+
+#ammenities .AmmenIcon {
+    width: 20%;
+    text-align: right;
+}
+
+#ammenities .AmmenText {
+    width: 70%;
+}
+
+#ammenities .AmmenIcon svg {
+    height: 32px;
+}
+
 @media screen and (min-width: 768px) {
     .overlay,
     .mainImage {

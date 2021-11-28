@@ -92,9 +92,7 @@
         </section>
 
         <section id="ammenities">
-
-
-
+            <h3>Our Ammenities</h3>
         </section>
 
     </main>
@@ -128,17 +126,22 @@
     <script src="js/icons.js"></script>
     <script src="js/menu.js"></script>
 
+    <sciprt src="js/swiped-events.js"></sciprt>
     <script src="js/imageGallery.js"></script>
     <script src="js/imageViewer.js"></script>
-    <sciprt src="js/swiped-events.js"></sciprt>
+
 
     <script src="js/rating.js"></script>
 
     <script src="js/hotel-profile.js"></script>
     <script>
-        profile.build();
+        document.addEventListener("readystatechange", event => {
+            if (event.target.readyState == "interactive") {
+                profile.build();
 
-        imageViewer.init();
+                imageViewer.init();
+            }
+        });
     </script>
 
     <!-- Inessential Optional Add Ons -->

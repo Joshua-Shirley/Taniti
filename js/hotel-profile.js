@@ -37,6 +37,8 @@ const profile = {
         this.price();
 
         this.address();
+
+        this.ammenities();
     },
     head: function() {
         var h1 = document.createElement("h1");
@@ -98,15 +100,41 @@ const profile = {
         var div = document.querySelector("#ammenities");
 
         var ammenities = [
-            { icon: "pool", text: "Pool" },
-            { icon: "hot-tub", text: "Hot Tub" },
+            { icon: "beach", text: "Beach access" },
+            { icon: "swimmer", text: "Pool" },
+            { icon: "swimming-pool-solid", text: "Hot Tub" },
             { icon: "cocktail", text: "Hotel Bar" },
-            { icon: "cocktail", text: "Nightclimb" },
-            { icon: "food", text: "Restaruant" },
+            { icon: "nightclub", text: "Night Club" },
+            { icon: "forkSpoon", text: "Restaruant" },
             { icon: "coffee", text: "Morning Roast" },
-            { icon: "WiFi", text: "WiFi Fast Internet" }
+            { icon: "wifi", text: "WiFi Fast Internet" },
+            { icon: "spa", text: "Spa" }
         ]
 
+        var holder = document.createElement("div");
+        holder.classList.add("holder");
+
+        ammenities.forEach(am => {
+
+            var dRow = document.createElement("div");
+            dRow.classList.add("row");
+
+            var divIcon = document.createElement("div");
+            divIcon.classList.add("AmmenIcon");
+            divIcon.appendChild(icon.insert(am.icon));
+
+            var divText = document.createElement("div");
+            divText.classList.add("AmmenText");
+            divText.innerHTML = am.text;
+
+            dRow.appendChild(divIcon);
+            dRow.appendChild(divText);
+
+            holder.appendChild(dRow);
+        });
+
+        div.appendChild(holder);
+        return div;
     }
 
 

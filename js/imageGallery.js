@@ -18,6 +18,11 @@ const imageGallery = {
     mainImage: function() {
         var main = document.createElement("div");
         main.classList.add("mainImage");
+
+        // random image
+        //var max = hotels[4].images.length;
+        //var ran = Math.floor(Math.random() * max);
+
         main.appendChild(this.img(0));
 
         return main;

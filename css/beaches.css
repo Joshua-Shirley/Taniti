@@ -1,0 +1,17 @@
+main {
+    padding: 0;
+}
+
+.container {}
+
+section {
+    padding-bottom: 3rem;
+}
+
+.beachTitle {
+    font-size: 1.8rem;
+}
+
+.shortDesc {
+    font-style: italic;
+}
