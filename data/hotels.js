@@ -548,6 +548,10 @@ const hotels = [{
         distanceToAirport: 0,
         pool: "No",
         images: [{
+                url: "media\\hotels\\mandarin\\bangkok-16-hotel-the-authors-wing-dusk-01.webp",
+                alt: "mandarin"
+            },
+            {
                 url: "media\\hotels\\mandarin\\bangkok-20-room-state-bathroom.webp",
                 alt: "mandarin"
             },
@@ -561,10 +565,6 @@ const hotels = [{
             },
             {
                 url: "media\\hotels\\mandarin\\Cinco-de-Mayo-1-1.png",
-                alt: "mandarin"
-            },
-            {
-                url: "media\\hotels\\mandarin\\bangkok-16-hotel-the-authors-wing-dusk-01.webp",
                 alt: "mandarin"
             },
             {

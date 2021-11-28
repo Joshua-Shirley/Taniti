@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Taniti Island - Web 5.0 Template</title>
-    <meta title="" content="">
-    <meta name="description" content="">
+    <title>Taniti Island - Beaches</title>
+    <meta title="Taniti Island - Beaches" content="Beaches">
+    <meta name="description" content="Taniti Island - Beaches">
     <meta name="author" content="Josh Shirley">
 
-    <meta property="og:title" content="">
+    <meta property="og:title" content="Taniti Island - Beaches">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://generic.co">
     <meta property="og:description" content="">
@@ -89,11 +89,38 @@
     <script>
         var main = document.querySelector("main");
 
+        // build a secondary menu
+        var section = document.createElement("section");
+        section.id = "beachMenu";
+
+        var divC = document.createElement("div");
+        divC.classList.add("container");
+        section.appendChild(divC);
+
+        var secondMenu = document.createElement("ul");
+        secondMenu.classList.add("beaches");
+
+        var beach = beaches.map(beach => beach.title);
+        beach.forEach(b => {
+
+            var li = document.createElement("li");
+            var link = document.createElement("a");
+            link.href = "#" + b.replaceAll(' ', '');
+            link.innerText = b;
+            li.appendChild(link);
+
+            secondMenu.appendChild(li);
+        });
+
+        divC.appendChild(secondMenu);
+
+        main.appendChild(section);
+
         beaches.forEach(beach => {
 
             // Build the section
             var section = document.createElement("section");
-            section.id = beach.title;
+            section.id = beach.title.replaceAll(' ', '');
             var container = document.createElement("div");
             container.classList.add("container");
             section.appendChild(container);
@@ -132,6 +159,24 @@
             main.appendChild(section);
 
         });
+
+        var secondaryMenu = document.querySelectorAll("ul.beaches a");
+        secondaryMenu.forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                scollDown(link.getAttribute("href").replace("#", ""));
+            });
+        });
+
+        function scollDown(elementId) {
+            var t = document.getElementById(elementId);
+            var position = t.getBoundingClientRect();
+
+            window.scrollTo({
+                top: position.top,
+                behavior: "smooth"
+            });
+        }
     </script>
 
     <!-- Inessential Optional Add Ons -->
