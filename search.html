@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taniti Island - Beaches</title>
+    <meta title="Taniti Island - Beaches" content="Beaches">
+    <meta name="description" content="Taniti Island - Beaches">
+    <meta name="author" content="Josh Shirley">
+
+    <meta property="og:title" content="Taniti Island - Beaches">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://generic.co">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="image.png">
+
+    <link rel="icon" href="media/favicon/favicon.ico">
+
+    <link rel="apple-touch-icon" href="media/favicon/apple-touch-icon.png">
+
+    <!-- External stylesheet -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/structure.css">
+
+    <!-- <link rel="stylesheet" href="css/style.css?v=1.0"> -->
+
+    <style>
+        main {
+            padding: 12px 0 12px 0;
+        }
+        
+        input[name="query"] {
+            background-image: url("data:image/svg+xml,%3Csvg data-icon='search' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='rgb(35 35 35 / 90%)' d='M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: 10px;
+            padding-left: 40px;
+        }
+        
+        button {
+            background-color: var(--color-medium-blue);
+        }
+        
+        h3 {
+            margin: 0;
+            padding-left: 1rem;
+        }
+        
+        #results a {
+            text-decoration: none;
+        }
+        
+        span.title {
+            display: block;
+            font-size: 1.25rem;
+            padding: 0 0 6px 0;
+            color: dodgerblue;
+        }
+        
+        #results a:visited span.title {
+            color: dodgerblue;
+        }
+        
+        span.link {
+            width: 90%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            color: #202124;
+            font-style: normal;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+    </style>
+
+    <!-- Pre Load Javascripts -->
+    <script src="data/beaches.js"></script>
+    <script src="data/hotels.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Taniti Island</a>
+            </div>
+
+            <nav class="menu" id="mainMenu">
+                <!-- Edit links in the menu.js file -->
+            </nav>
+
+            <div class="hamburger" id="activateMenu" onclick="Menu.toggle();">
+                <a href="#">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="search">
+            <div class="container">
+
+                <form name="search" action="">
+                    <div class="row">
+
+                        <div class="col-12 mb-2">
+                            <input type="text" name="query" value="" placeholder="" aria-placeholder="" maxlength="2048" title="search" aria-label="Search" />
+                        </div>
+
+                        <div class="col-12 ">
+                            <button type="button" name="Submit" class="right">Search</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+
+        <section id="suggestions">
+
+            <h3>Results</h3>
+
+            <div class="container" id="results">
+
+                <a href="#link">
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <span class="link">
+                                file:///G:/OneDrive%20-%20Windsurf%20Utah/WGU/CS%20856%20-%20User%20Experience%20Design/Prototype/Taniti/search.html#link
+                            </span>
+                            <span class="title">Result One</span>
+                            <span class="shortDesc">
+
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#link">
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <span class="link">
+                                file:///G:/OneDrive%20-%20Windsurf%20Utah/WGU/CS%20856%20-%20User%20Experience%20Design/Prototype/Taniti/search.html#link
+                            </span>
+                            <span class="title">Result One</span>
+                            <span class="shortDesc">
+
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#link">
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <span class="link">
+                                file:///G:/OneDrive%20-%20Windsurf%20Utah/WGU/CS%20856%20-%20User%20Experience%20Design/Prototype/Taniti/search.html#link
+                            </span>
+                            <span class="title">Result One</span>
+                            <span class="shortDesc">
+
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#link">
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <span class="link">
+                                file:///G:/OneDrive%20-%20Windsurf%20Utah/WGU/CS%20856%20-%20User%20Experience%20Design/Prototype/Taniti/search.html#link
+                            </span>
+                            <span class="title">Result One</span>
+                            <span class="shortDesc">
+
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#link">
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <span class="link">
+                                file:///G:/OneDrive%20-%20Windsurf%20Utah/WGU/CS%20856%20-%20User%20Experience%20Design/Prototype/Taniti/search.html#link
+                            </span>
+                            <span class="title">Result One</span>
+                            <span class="shortDesc">
+
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="version alignCenter">Current Version: <span id="versionNumber">1.00</span></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <p class="publicLicense alignCenter">This application is shared using a <a href="public-license.html" target="_blank">GNU GENERAL PUBLIC LICENSE</a>. </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <p class="copyright alignCenter">Copyright &copy; <span id="copyrightYear">2021</span>, Joshua Shirley</p>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Final Load Javascripts -->
+    <!-- Majority of js code should go here -->
+    <script src="js/icons.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/menu.js"></script>
+
+    <script>
+        const search = {
+            init: function() {
+
+                // enter the string
+
+                // string (single word)
+
+                // search hotels
+
+                // search beaches
+
+                // search rules & laws
+
+                var r = document.getElementById("results");
+                r.innerHTML = "";
+
+            },
+            results = [],
+            plural: function() {
+                if (string[string.length - 1] == 's') {
+                    string = string.substring(0, string.length - 1);
+                }
+                string = string + '[s]';
+                return string;
+            },
+            block: function(url, title) {
+                var a = document.createElement("a");
+                a.href = url;
+
+                var divRow = document.createElement("div");
+                divRow.classList.add("row");
+                divRow.classList.add("mb-1");
+                a.appendChild(divRow);
+
+                var divCol = document.createElement("div");
+                divCol.classList.add("col-12");
+                divRow.appendChild(divRow);
+
+                var spanLink = document.createElement("span");
+                spanLink.classList.add("link");
+                divCol.appendChild(spanLink);
+
+                var spanTitle = document.createElement("span");
+                spanTitle.classList.add("title");
+                spanTitle.innerText = title;
+                divCol.appendChild(spanTitle);
+
+                var spanShort = document.createElement("span");
+                spanShort.classList.add("shortDesc");
+                divCol.appendChild(spanShort);
+
+                return a;
+            }
+
+
+        }
+    </script>
+
+    <!-- Inessential Optional Add Ons -->
+    <script src="js/scrollTopButton.js"></script>
+
+</body>
+
+</html>

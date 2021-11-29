@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Taniti Island - Web 5.0 Template</title>
-    <meta title="" content="">
-    <meta name="description" content="">
+    <title>Taniti Island Map</title>
+    <meta title="Taniti Island Map" content="Laws">
+    <meta name="description" content="Taniti Island Map">
     <meta name="author" content="Josh Shirley">
 
-    <meta property="og:title" content="">
+    <meta property="og:title" content="Taniti Island Map">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://generic.co">
     <meta property="og:description" content="">
@@ -21,15 +21,48 @@
 
     <!-- External stylesheet -->
 
-
-
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/structure.css">
 
-    <!-- <link rel="stylesheet" href="css/style.css?v=1.0"> -->
+    <style>
+        main {
+            padding: 0.5rem 0;
+        }
+        
+        section.image {
+            position: relative;
+        }
+        
+        .overlay {
+            position: absolute;
+            z-index: 10;
+            /* 
+            background-color: rgb(0 106 253 / 33%);
+            border: 1px solid dodgerblue;
+            */
+        }
+        
+        .map {
+            position: relative;
+            z-index: 0;
+        }
+        
+        span.marker {
+            position: absolute;
+            color: red;
+        }
+        
+        span.marker svg {
+            height: 25px;
+        }
+        
+        span.marker:hover svg {
+            height: 40px;
+        }
+    </style>
 
-    <!-- Pre Load Javascripts -->
-    <script src="js/icons.js"></script>
+    <script src="data/beaches.js"></script>
+    <script src="data/hotels.js"></script>
 
 </head>
 
@@ -53,19 +86,28 @@
                 </a>
             </div>
 
-            <script src="js/menu.js"></script>
         </div>
     </header>
 
     <main>
-        <div class="">
-            <h1>Generic Template</h1>
-        </div>
+        <section class="title">
+            <div class="container">
+                <h1>Taniti Island Map</h1>
+            </div>
+        </section>
 
-        <section>
-            <h1>Section - Full Width</h1>
+        <section class="image">
+            <div class="container">
+                <div class="overlay" id="Locations">
+                </div>
 
+                <div class="map" id="mainMap">
+                    <img src="media/island-map-cropped.png" />
+                </div>
+            </div>
+        </section>
 
+        <section class="details">
         </section>
 
     </main>
@@ -96,11 +138,112 @@
     <!-- Final Load Javascripts -->
     <!-- Majority of js code should go here -->
     <script src="js/footer.js"></script>
+    <script src="js/icons.js"></script>
+    <script src="js/menu.js"></script>
 
-    <!--
-        Requirements should only be used on the settings page.
-    <script src="js/requirements.js"></script>
-    -->
+    <script>
+        const locations = [{
+            "name": "Jeem Noi Bay",
+            "type": "Beach",
+            "position": {
+                "top": 0.0948818297331639,
+                "left": 0.23172435897435897
+            }
+        }, {
+            "name": "Ju Yai Beach",
+            "type": "Beach",
+            "position": {
+                "top": 0.1264320203303685,
+                "left": 0.48413782051282056
+            }
+        }, {
+            "name": "Nom Lek Lek Bay",
+            "type": "Beach",
+            "position": {
+                "top": 0.5801016518424397,
+                "left": 0.779309829059829
+            }
+        }, {
+            "name": "Airport",
+            "type": "Beach",
+            "position": {
+                "top": 0.177994917407878,
+                "left": 0.06620694444444444
+            }
+        }, {
+            "name": "Chompu Beach",
+            "type": "Beach",
+            "position": {
+                "top": 0.6071321473951715,
+                "left": 0.17655128205128207
+            }
+        }, {
+            "name": "Capital City",
+            "type": "Beach",
+            "position": {
+                "top": 0.23866963151207116,
+                "left": 0.09103450854700854
+            }
+        }, {
+            "name": "Ma'Na Bay",
+            "type": "Beach",
+            "position": {
+                "top": 0.5946861499364675,
+                "left": 0.5475865384615385
+            }
+        }]
+
+        const maps = {
+            init: function() {
+                this.layout();
+
+                window.addEventListener('resize', function() {
+                    maps.layout();
+                });
+            },
+            width: 0,
+            height: 0,
+            layout: function() {
+                this.overlay();
+                this.icons();
+            },
+            overlay: function() {
+                var mapImage = document.querySelector("#mainMap img");
+                this.width = mapImage.width;
+                this.height = mapImage.height;
+
+                var overlay = document.querySelector(".overlay");
+                overlay.style.height = this.height + "px";
+                overlay.style.width = this.width + "px";
+            },
+            cleanId: function(str) {
+                const regex = /[^\d\w]*/ig;
+                str = str.replaceAll(regex, '');
+                return str;
+            },
+            icons: function() {
+
+                var ol = document.getElementById("Locations");
+                ol.innerHTML = "";
+
+                locations.forEach(location => {
+
+                    var loc = icon.insert("marker");
+                    loc.classList.add("marker");
+                    loc.id = this.cleanId(location.name);
+
+                    loc.style.top = (this.height * location.position.top) + "px";
+                    loc.style.left = (this.width * location.position.left) + "px";
+
+                    ol.appendChild(loc);
+
+                });
+
+            }
+        }
+
+        maps.init();
+    </script>
 
     <!-- Inessential Optional Add Ons -->
     <script src="js/scrollTopButton.js"></script>
