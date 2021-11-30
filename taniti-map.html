@@ -26,11 +26,22 @@
 
     <style>
         main {
-            padding: 0.5rem 0;
+            padding: 0 0;
+        }
+        
+        section.title {
+            background-color: #0071bd;
+        }
+        
+        h1 {
+            margin: 0;
+            background-color: #0071bd;
+            color: var(--color-white);
         }
         
         section.image {
             position: relative;
+            background-color: #0b1d47;
         }
         
         .overlay {
@@ -47,17 +58,48 @@
             z-index: 0;
         }
         
-        span.marker {
+        #Locations span.icon {
             position: absolute;
+        }
+        
+        #Locations span.icon svg {
+            height: 20px;
+        }
+        
+        #Locations span.icon:hover svg {
+            height: 22px;
+        }
+        
+        span.marker {
             color: red;
         }
         
-        span.marker svg {
-            height: 25px;
+        span.marker:hover {
+            color: rgb(219, 1, 1);
         }
         
-        span.marker:hover svg {
-            height: 40px;
+        span.beach {
+            color: yellow;
+        }
+        
+        span.beach:hover {
+            color: rgb(200, 200, 0);
+        }
+        
+        span.house {
+            color: #05e105;
+        }
+        
+        span.house:hover {
+            color: rgb(2, 100, 2);
+        }
+        
+        span.airport {
+            color: #f8f8f8;
+        }
+        
+        .flex {
+            text-align: center;
         }
     </style>
 
@@ -104,10 +146,71 @@
                 <div class="map" id="mainMap">
                     <img src="media/island-map-cropped.png" />
                 </div>
+
+                <div class="buttons" id="filter">
+                    <div class="flex">
+                        <button type="button" value="beach">Beaches</button>
+                        <button type="button" value="hotel">Hotels</button>
+                        <button type="button" value="vrbo">Vacation Rentals</button>
+                        <button type="button" value="airport">Airport</button>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <style>
+            .short {
+                padding-left: 1rem;
+                line-height: 1.6em;
+            }
+            
+            .link a {
+                color: dodgerblue;
+                line-height: 50px;
+            }
+            
+            .link a span.button {
+                background-color: dodgerblue;
+                color: white;
+                padding: 0 12px;
+                float: right;
+            }
+            
+            .details .image {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 150px;
+            }
+            
+            .details .image img {
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+                min-height: 150px;
+            }
+        </style>
+
         <section class="details">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="title">
+                        <h3>Chompu Beach</h3>
+                    </div>
+                    <div class="col-4 image">
+                        <img src="media/beaches/australia-south-pacific-beach4-slider1.jpg" />
+                    </div>
+                    <div class="col-8 short">
+                        This tree-lined paradise is a great place to check out vibrant sea life, like bright orange starfish or shiny red crabs.
+                    </div>
+                    <div class="col-12 link">
+                        <a href="taniti-beaches.html#NomLekLekBay">
+                            <span class="text">https://Taniti/taniti-map.html</span>
+                            <span class="button">More Details</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
 
     </main>
@@ -143,53 +246,276 @@
 
     <script>
         const locations = [{
-            "name": "Jeem Noi Bay",
-            "type": "Beach",
-            "position": {
-                "top": 0.0948818297331639,
-                "left": 0.23172435897435897
+            name: "Jeem Noi Bay",
+            id: 0,
+            type: "Beach",
+            position: {
+                top: 0.05277777777777778,
+                left: 0.22520420070011668
             }
         }, {
-            "name": "Ju Yai Beach",
-            "type": "Beach",
-            "position": {
-                "top": 0.1264320203303685,
-                "left": 0.48413782051282056
+            name: "Ju Yai Beach",
+            id: 1,
+            type: "Beach",
+            position: {
+                top: 0.10138888888888889,
+                left: 0.48424737456242706
             }
         }, {
-            "name": "Nom Lek Lek Bay",
-            "type": "Beach",
-            "position": {
-                "top": 0.5801016518424397,
-                "left": 0.779309829059829
+            name: "Nom Lek Lek Bay",
+            id: 2,
+            type: "Beach",
+            position: {
+                top: 0.5805555555555556,
+                left: 0.779463243873979
             }
         }, {
-            "name": "Airport",
-            "type": "Beach",
-            "position": {
-                "top": 0.177994917407878,
-                "left": 0.06620694444444444
+            name: "Airport",
+            id: 3,
+            type: "Airport",
+            position: {
+                top: 0.20833333333333334,
+                left: 0.06651108518086347
             }
         }, {
-            "name": "Chompu Beach",
-            "type": "Beach",
-            "position": {
-                "top": 0.6071321473951715,
-                "left": 0.17655128205128207
+            name: "Chompu Beach",
+            id: 4,
+            type: "Beach",
+            position: {
+                top: 0.6069444444444444,
+                left: 0.176196032672112
             }
         }, {
-            "name": "Capital City",
-            "type": "Beach",
-            "position": {
-                "top": 0.23866963151207116,
-                "left": 0.09103450854700854
+            name: "Capital City",
+            id: 5,
+            type: "Beach",
+            position: {
+                top: 0.2388888888888889,
+                left: 0.10151691948658109
             }
         }, {
-            "name": "Ma'Na Bay",
-            "type": "Beach",
-            "position": {
-                "top": 0.5946861499364675,
-                "left": 0.5475865384615385
+            name: "Ma'Na Bay",
+            id: 6,
+            type: "Beach",
+            position: {
+                top: 0.5944444444444444,
+                left: 0.5472578763127188
+            }
+        }, {
+            name: "Hilton Hotel",
+            id: 7,
+            type: "Hotel",
+            position: {
+                top: 0.08888888888888889,
+                left: 0.2088681446907818
+            }
+        }, {
+            name: "InterContinental Resort",
+            id: 8,
+            type: "Hotel",
+            position: {
+                top: 0.12638888888888888,
+                left: 0.4970828471411902
+            }
+        }, {
+            name: "Manava Suite Resort",
+            id: 9,
+            type: "Hotel",
+            position: {
+                top: 0.07916666666666666,
+                left: 0.2485414235705951
+            }
+        }, {
+            name: "Pearl Resorts",
+            id: 10,
+            type: "Hotel",
+            position: {
+                top: 0.11388888888888889,
+                left: 0.4690781796966161
+            }
+        }, {
+            name: "Ia Ora Sofitel",
+            id: 11,
+            type: "Hotel",
+            position: {
+                top: 0.09861111111111111,
+                left: 0.22170361726954493
+            }
+        }, {
+            name: "Le Taniti - Pearl Resorts",
+            id: 12,
+            type: "Hotel",
+            position: {
+                top: 0.6,
+                left: 0.8448074679113186
+            }
+        }, {
+            name: "Royal Tanitien",
+            id: 13,
+            type: "Hotel",
+            position: {
+                top: 0.16944444444444445,
+                left: 0.07701283547257877
+            }
+        }, {
+            name: "Taniti Airport Motel",
+            id: 14,
+            type: "Hotel",
+            position: {
+                top: 0.18611111111111112,
+                left: 0.058343057176196034
+            }
+        }, {
+            name: "Sarah Nui",
+            id: 15,
+            type: "Hotel",
+            position: {
+                top: 0.5805555555555556,
+                left: 0.14002333722287047
+            }
+        }, {
+            name: "Sofitel Kia Ora Moorea",
+            id: 16,
+            type: "Hotel",
+            position: {
+                top: 0.5916666666666667,
+                left: 0.8109684947491248
+            }
+        }, {
+            name: "Moorea Lagoon Resort",
+            id: 17,
+            type: "Hotel",
+            position: {
+                top: 0.6027777777777777,
+                left: 0.22520420070011668
+            }
+        }, {
+            name: "Fenua Mata'I'oa",
+            id: 18,
+            type: "Hotel",
+            position: {
+                top: 0.3013888888888889,
+                left: 0.060676779463243874
+            }
+        }, {
+            name: "Moorea Beach Lodge",
+            id: 19,
+            type: "Hotel",
+            position: {
+                top: 0.34305555555555556,
+                left: 0.06301050175029171
+            }
+        }, {
+            name: "Manava Beach Resort",
+            id: 20,
+            type: "Hotel",
+            position: {
+                top: 0.5694444444444444,
+                left: 0.7561260210035006
+            }
+        }, {
+            name: "Moorea Golf Lodge",
+            id: 21,
+            type: "Hotel",
+            position: {
+                top: 0.17777777777777778,
+                left: 0.10851808634772463
+            }
+        }, {
+            name: "Au Regina",
+            id: 22,
+            type: "Home",
+            position: {
+                top: 0.6083333333333333,
+                left: 0.8284714119019837
+            }
+        }, {
+            name: "Villa Mitirapa",
+            id: 23,
+            type: "Home",
+            position: {
+                top: 0.6138888888888889,
+                left: 0.26254375729288215
+            }
+        }, {
+            name: "Villa Vahineria",
+            id: 24,
+            type: "Home",
+            position: {
+                top: 0.10277777777777777,
+                left: 0.24154025670945156
+            }
+        }, {
+            name: "Villa Infinity Dream",
+            id: 25,
+            type: "Home",
+            position: {
+                top: 0.23472222222222222,
+                left: 0.045507584597432905
+            }
+        }, {
+            name: "Villa Maere Villa",
+            id: 26,
+            type: "Home",
+            position: {
+                top: 0.11388888888888889,
+                left: 0.5180863477246208
+            }
+        }, {
+            name: "Villa Venus",
+            id: 27,
+            type: "Home",
+            position: {
+                top: 0.2625,
+                left: 0.07117852975495916
+            }
+        }, {
+            name: "Fare Temahana",
+            id: 28,
+            type: "Home",
+            position: {
+                top: 0.6263888888888889,
+                left: 0.5764294049008168
+            }
+        }, {
+            name: "Fare Hanalei Dream",
+            id: 29,
+            type: "Home",
+            position: {
+                top: 0.11944444444444445,
+                left: 0.5460910151691949
+            }
+        }, {
+            name: "Condo Moana Nui",
+            id: 30,
+            type: "Home",
+            position: {
+                top: 0.6513888888888889,
+                left: 0.3267211201866978
+            }
+        }, {
+            name: "Eucalyptus Treehouse",
+            id: 31,
+            type: "Home",
+            position: {
+                top: 0.26805555555555555,
+                left: 0.16686114352392065
+            }
+        }, {
+            name: "Wendy Location",
+            id: 32,
+            type: "Home",
+            position: {
+                top: 0.8763888888888889,
+                left: 0.8401400233372228
+            }
+        }, {
+            name: "Villa Oasis",
+            id: 33,
+            type: "Home",
+            position: {
+                top: 0.09861111111111111,
+                left: 0.2555425904317386
             }
         }]
 
@@ -228,12 +554,27 @@
 
                 locations.forEach(location => {
 
-                    var loc = icon.insert("marker");
-                    loc.classList.add("marker");
-                    loc.id = this.cleanId(location.name);
+                    if (location.type == "Beach") {
+                        var loc = icon.insert("beach");
+                        loc.classList.add("beach");
+                    } else if (location.type == "Home") {
+                        var loc = icon.insert("house");
+                        loc.classList.add("house");
+                    } else if (location.type == "Airport") {
+                        var loc = icon.insert("airplane");
+                        loc.classList.add("airport");
+                    } else {
+                        var loc = icon.insert("marker");
+                        loc.classList.add("marker");
+                    }
 
-                    loc.style.top = (this.height * location.position.top) + "px";
-                    loc.style.left = (this.width * location.position.left) + "px";
+                    //loc.id = this.cleanId(location.name);
+                    loc.id = "marker" + location.id;
+                    loc.setAttribute("data-name", location.name);
+                    loc.setAttribute("data-type", location.type);
+
+                    loc.style.top = Math.round(this.height * location.position.top) + "px";
+                    loc.style.left = Math.round(this.width * location.position.left) + "px";
 
                     ol.appendChild(loc);
 
@@ -243,6 +584,53 @@
         }
 
         maps.init();
+
+        const mapFilters = {
+            init: function() {
+                document.querySelectorAll(".flex button").forEach(button => {
+                    button.addEventListener("click", function(e) {
+
+                        if (button.value == "beach") {
+                            var elements = document.querySelectorAll("#Locations span.beach");
+                        } else if (button.value == "hotel") {
+                            var elements = document.querySelectorAll("#Locations span.marker");
+                        } else if (button.value == "vrbo") {
+                            var elements = document.querySelectorAll("#Locations span.house");
+                        } else if (button.value == "airport") {
+                            var elements = document.querySelectorAll("#Locations span.airport");
+                        }
+
+                        elements.forEach(el => {
+                            if (el.style.display == "none") {
+                                el.style.display = "initial";
+                            } else {
+                                el.style.display = "none";
+                            }
+                        });
+
+                    });
+                })
+            }
+        }
+
+        mapFilters.init();
+
+        const mapMarkers = {
+            init: function() {
+                var markers = document.querySelectorAll("#Locations span.icon");
+
+                markers.forEach(m => {
+                    m.addEventListener("click", function(event) {
+                        console.log(m.getAttribute("data-name"));
+                    });
+                });
+            },
+            display: function() {
+
+            }
+        }
+
+        mapMarkers.init();
     </script>
 
     <!-- Inessential Optional Add Ons -->
