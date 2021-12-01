@@ -64,7 +64,7 @@ const FastUp = {
         rulesets.push(".show { display: block;}");
         rulesets.push(".hide { display: none;}");
         rulesets.push("." + this.cssClass + " { background-color: rgb(35 35 35 / 90%); padding: 14px 14px; border: 1px solid #f8f8f8; color: white;border-radius: 6px;box-shadow: 0 0 8px 1px #bcbbbb;}");
-        rulesets.push("." + this.containerClass + "{ display: block;position: fixed; bottom: 2rem; right: 2rem;}");
+        rulesets.push("." + this.containerClass + "{ display: block;position: fixed; bottom: 2rem; right: 2rem;z-index:100;}");
 
         css.innerHTML = rulesets.join("\n");
         document.head.append(css);

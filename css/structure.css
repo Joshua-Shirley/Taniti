@@ -181,9 +181,10 @@ main {
 
 footer {
     min-height: 300px;
-    background-color: var(--color-blue-grey);
+    background-color: #ced4da;
     padding: 1rem;
     margin-top: 3rem;
+    font-size: 12px;
 }
 
 .container {
@@ -193,6 +194,12 @@ footer {
 
 footer .container {
     padding: 1.5rem 1rem;
+}
+
+footer a.island-font {
+    font-size: 48px;
+    color: #01365a;
+    text-decoration: none;
 }
 
 .hide {

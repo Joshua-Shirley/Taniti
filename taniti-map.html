@@ -225,6 +225,19 @@
 
     <footer>
         <div class="container">
+
+            <div class="row mb-3">
+                <div class="col-12 alignCenter">
+                    <a href="index.html" class="island-font">Taniti</a>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <p class="alignCenter">WS 856 - Task 1 Prototype.</p>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-12">
                     <p class="version alignCenter">Current Version: <span id="versionNumber">1.00</span></p>
@@ -583,6 +596,7 @@
 
                     loc.style.top = Math.round(this.height * location.position.top) + "px";
                     loc.style.left = Math.round(this.width * location.position.left) + "px";
+                    loc.style.display = "none";
 
                     ol.appendChild(loc);
 
@@ -592,36 +606,40 @@
         }
 
         maps.init();
+        maps.layout();
 
         const mapFilters = {
             init: function() {
                 document.querySelectorAll(".flex button").forEach(button => {
                     button.addEventListener("click", function(e) {
-
-                        if (button.value == "beach") {
-                            var elements = document.querySelectorAll("#Locations span.beach");
-                        } else if (button.value == "hotel") {
-                            var elements = document.querySelectorAll("#Locations span.marker");
-                        } else if (button.value == "vrbo") {
-                            var elements = document.querySelectorAll("#Locations span.house");
-                        } else if (button.value == "airport") {
-                            var elements = document.querySelectorAll("#Locations span.airport");
-                        }
-
-                        elements.forEach(el => {
-                            if (el.style.display == "none") {
-                                el.style.display = "initial";
-                            } else {
-                                el.style.display = "none";
-                            }
-                        });
-
+                        mapFilters.toggle(button.value);
                     });
                 })
+            },
+            toggle: function(value) {
+                if (value == "beach") {
+                    var elements = document.querySelectorAll("#Locations span.beach");
+                } else if (value == "hotel") {
+                    var elements = document.querySelectorAll("#Locations span.marker");
+                } else if (value == "vrbo") {
+                    var elements = document.querySelectorAll("#Locations span.house");
+                } else if (value == "airport") {
+                    var elements = document.querySelectorAll("#Locations span.airport");
+                }
+
+                elements.forEach(el => {
+                    if (el.style.display == "none") {
+                        el.style.display = "initial";
+                    } else {
+                        el.style.display = "none";
+                    }
+                });
             }
         }
 
         mapFilters.init();
+        mapFilters.toggle("airport");
+        mapFilters.toggle("beach");
 
         const mapMarkers = {
             init: function() {
@@ -629,6 +647,9 @@
 
                 markers.forEach(m => {
                     m.addEventListener("click", function(event) {
+                        mapMarkers.details(m.getAttribute("data-name"), m.getAttribute("data-type"));
+                    });
+                    m.addEventListener("touch", function(event) {
                         mapMarkers.details(m.getAttribute("data-name"), m.getAttribute("data-type"));
                     });
                 });

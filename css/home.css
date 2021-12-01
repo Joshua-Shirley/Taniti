@@ -4,11 +4,17 @@ main {
     margin: 0 auto;
 }
 
-.mainImage {
+section {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+section .mainImage {
     width: 100%;
     height: 300px;
     text-align: center;
     position: relative;
+    top: 0;
 }
 
 .mainImage img {
@@ -25,10 +31,15 @@ section.title {
     position: relative;
 }
 
-section.title .container {
+section .container {
     position: absolute;
-    z-index: 1;
+    z-index: 5;
     width: 100%;
+    top: 0;
+}
+
+section:not(.title) .container {
+    top: -48px;
 }
 
 section.title .container h1 {
@@ -39,13 +50,81 @@ section.title .container h1 {
     color: white;
     font-size: 3rem;
     text-align: center;
+    text-shadow: none;
 }
 
-section.beaches a {
+section .container>* {
+    text-shadow: 2px 2px 8px white;
+}
+
+.welcome {
+    padding: 1rem;
+}
+
+.welcome h3 {
+    margin: 2rem 0 1rem;
+    font-size: 24px;
+    color: #01365a;
+}
+
+.welcome p {
+    font-size: 16px;
+    line-height: 28px;
+    color: #001f34;
+    margin-bottom: 4rem;
+}
+
+ul.quickLinks {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.quickLinks li a {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 26px;
+    font-family: initital;
+    text-transform: uppercase;
+    background-image: url("data:image/svg+xml,%3Csvg role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='333333' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 12px;
+    padding: 8px 15px 8px 8px;
+    text-align: left;
+}
+
+section a {
     text-decoration: none;
     color: black;
     font-family: 'Comforter';
     font-size: 3rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+section:not(.title) a {
+    display: block;
+    text-align: left;
+    min-height: 320px;
+}
+
+section a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (min-width: 450px) {
+    ul.quickLinks {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        margin-bottom: 0rem;
+        column-gap: 16px;
+    }
+    ul.quickLinks li a {
+        margin: 0 0 24px 0;
+    }
 }
 
 @media screen and (min-width: 992px) {
