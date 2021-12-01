@@ -8,7 +8,7 @@ let Menu = {
         { href: "taniti-map.html", text: "Map", icon: "map" },
         { href: "taniti-hotels.html", text: "Hotels", icon: "hotel" },
         { href: "taniti-beaches.html", text: "Beaches", icon: "beach" },
-        { href: "taniti-transit.html", text: "Transit", icon: "bus" },
+        /*{ href: "taniti-transit.html", text: "Transit", icon: "bus" },*/
         { href: "taniti-laws.html", text: "Laws", icon: "gavel" },
         { href: "search.html", text: "Search", icon: "search" }
     ],

@@ -30,13 +30,19 @@ const imageGallery = {
     thumbNails: function() {
         var thumbs = document.createElement("div");
         thumbs.classList.add("thumbnails");
+
+        var container = document.createElement("div");
+        container.classList.add("container");
+
         var thumbDiv = document.createElement("div");
         thumbDiv.classList.add("center");
 
         for (var i = 0; i < this.array.length; i++) {
             thumbDiv.appendChild(this.img(i));
         }
-        thumbs.appendChild(thumbDiv);
+        //thumbs.appendChild(thumbDiv);
+        container.appendChild(thumbDiv);
+        thumbs.appendChild(container);
 
         return thumbs;
     },

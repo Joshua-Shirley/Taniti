@@ -28,6 +28,10 @@ body {
     box-sizing: border-box;
 }
 
+.island-font {
+    font-family: 'Comforter', cursive;
+}
+
 img {
     max-height: 100%;
     max-width: 100%;

@@ -805,7 +805,7 @@ const hotels = [{
         reviews: 2864,
         stars: 3.5,
         price: 199,
-        location: "Ma'Na Bay",
+        location: "Ma Na Bay",
         distanceToAirport: 8,
         pool: "Yes",
         description: "Comfortable Punaauia apartment with kitchen",

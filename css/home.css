@@ -1,0 +1,56 @@
+main {
+    padding: 0;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.mainImage {
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    position: relative;
+}
+
+.mainImage img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    top: 0 !important;
+    left: 0 !important;
+    position: absolute;
+    min-height: 300px;
+}
+
+section.title {
+    position: relative;
+}
+
+section.title .container {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+}
+
+section.title .container h1 {
+    font-family: 'Comforter', cursive;
+    position: relative;
+    width: 100%;
+    margin: 2rem auto;
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+}
+
+section.beaches a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Comforter';
+    font-size: 3rem;
+}
+
+@media screen and (min-width: 992px) {
+    section.title .container h1 {
+        width: var(--lg);
+        font-size: 5rem;
+    }
+}

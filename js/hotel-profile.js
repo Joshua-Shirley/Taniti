@@ -44,18 +44,18 @@ const profile = {
         var h1 = document.createElement("h1");
         h1.innerText = this.hotel.name;
 
-        var title = document.getElementById("title");
+        var title = document.querySelector("#title .container");
         title.appendChild(h1);
     },
     shortDesc: function() {
         var p = document.createElement("p");
         p.innerText = this.hotel.description;
 
-        var title = document.getElementById("title");
+        var title = document.querySelector("#title .container");
         title.appendChild(p);
     },
     stars: function() {
-        var product = document.getElementById("product");
+        var product = document.querySelector("#product .container");
         var rating = ratings.build(this.hotel.stars, 5);
 
         product.appendChild(rating);
@@ -70,7 +70,7 @@ const profile = {
         span.innerHTML = formatter.format(this.hotel.price);
         div.appendChild(span);
 
-        var product = document.getElementById("product");
+        var product = document.querySelector("#product .container");
         product.appendChild(div);
     },
     images: function() {
@@ -133,8 +133,20 @@ const profile = {
             holder.appendChild(dRow);
         });
 
-        div.appendChild(holder);
-        return div;
+        //div.appendChild(holder);
+
+        var container = document.createElement("div");
+        container.classList.add("container");
+
+        var h3 = document.createElement("h3");
+        h3.innerHTML = "Hotel Ammenities";
+        container.appendChild(h3);
+
+        container.appendChild(holder);
+
+        div.appendChild(container);
+
+        //return div;
     }
 
 

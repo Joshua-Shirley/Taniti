@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/structure.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comforter&display=swap" rel="stylesheet">
+
     <style>
         main {
             padding: 0 0;
@@ -101,6 +105,10 @@
         .flex {
             text-align: center;
         }
+        
+        button {
+            margin: 4px 0;
+        }
     </style>
 
     <script src="data/beaches.js"></script>
@@ -113,7 +121,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html">Taniti Island</a>
+                <a href="index.html" class="island-font">Taniti Island</a>
             </div>
 
             <nav class="menu" id="mainMenu">
@@ -191,7 +199,7 @@
             }
         </style>
 
-        <section class="details">
+        <section class="details" id="details">
             <div class="container">
                 <div class="row mb-2">
                     <div class="title">
@@ -294,7 +302,7 @@
                 left: 0.10151691948658109
             }
         }, {
-            name: "Ma'Na Bay",
+            name: "Ma Na Bay",
             id: 6,
             type: "Beach",
             position: {
@@ -621,11 +629,89 @@
 
                 markers.forEach(m => {
                     m.addEventListener("click", function(event) {
-                        console.log(m.getAttribute("data-name"));
+                        mapMarkers.details(m.getAttribute("data-name"), m.getAttribute("data-type"));
                     });
                 });
             },
-            display: function() {
+            cleanId: function(str) {
+                const regex = /[^\d\w]*/ig;
+                str = str.replaceAll(regex, '');
+                return str;
+            },
+            details: function(name, type) {
+
+                if (type == "Hotel" || type == "Home") {
+                    var index = hotels.findIndex(hotel => hotel.name == name);
+                    var hotel = hotels[index];
+                    var el = this.display(hotel.name, hotel.images[0].url, hotel.images[0].alt, hotel.description, "taniti-hotel.html?id=" + hotel.id);
+                } else if (type == "Beach") {
+
+                    var index = beaches.findIndex(beach => beach.title == name);
+                    var beach = beaches[index];
+
+                    var el = this.display(beach.title, beach.images[0].url, beach.images[0].alt, beach.shortDesc, "taniti-beaches.html#" + this.cleanId(beach.title));
+                } else if (type == "Airport") {
+                    var el = this.display("Airport", "media/airport.jpg", "Taniti Airport", "International Airport. The island's only airport.  All travel to and from the island starts and finishes here.", "");
+                }
+
+                document.getElementById("details").innerHTML = "";
+                document.getElementById("details").appendChild(el);
+            },
+            display: function(name, src, alt, shortDesc, href) {
+
+                var container = document.createElement("div");
+                container.classList.add("container");
+
+                var row = document.createElement("div");
+                row.classList.add("row");
+                row.classList.add("mb-2");
+                container.appendChild(row);
+
+                var title = document.createElement("div");
+                title.classList.add("title");
+                var h3 = document.createElement("h3");
+                h3.innerHTML = name;
+                title.appendChild(h3);
+                row.appendChild(title);
+
+                var image = document.createElement("div");
+                image.classList.add("col-4");
+                image.classList.add("image");
+                var img = document.createElement("img");
+                img.src = src;
+                img.alt = alt;
+                image.appendChild(img);
+                row.appendChild(image);
+
+                var short = document.createElement("div");
+                short.classList.add("col-8");
+                short.classList.add("short");
+                short.innerHTML = shortDesc;
+                row.appendChild(short);
+
+                var linkRow = document.createElement("div");
+                linkRow.classList.add("col-12");
+                linkRow.classList.add("link");
+
+                if (href != null) {
+                    var a = document.createElement("a");
+                    a.href = href;
+
+                    var spanText = document.createElement("span");
+                    spanText.classList.add("text");
+                    spanText.innerHTML = href;
+                    a.appendChild(spanText);
+
+                    var spanButton = document.createElement("span");
+                    spanButton.classList.add("button");
+                    spanButton.innerHTML = "More Details";
+                    a.appendChild(spanButton);
+
+                    linkRow.appendChild(a);
+                }
+                row.appendChild(linkRow);
+
+                return container;
 
             }
         }

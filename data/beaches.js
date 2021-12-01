@@ -42,9 +42,9 @@ const beaches = [{
         ]
     },
     {
-        title: "Ma'na Bay",
+        title: "Ma Na Bay",
         shortDesc: "Black sand, a quiet cove, and calm waters make this one of the best beaches in the world",
         description: "This small beach line is very beautiful.  The most instagramable photos are taken here.  Bring a good pair of walking shoes to get in and out.",
-        images: [{ url: "media/beaches/north-america-beach4-slider1.jpg", alt: "Ma'na Bay" }, { url: "media/beaches/north-america-beach5-slider2.jpg", alt: "Ma'na Bay" }]
+        images: [{ url: "media/beaches/north-america-beach4-slider1.jpg", alt: "Ma Na Bay" }, { url: "media/beaches/north-america-beach5-slider2.jpg", alt: "Ma Na Bay" }]
     }
 ]
