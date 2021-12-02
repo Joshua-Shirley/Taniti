@@ -707,7 +707,9 @@
                 var short = document.createElement("div");
                 short.classList.add("col-8");
                 short.classList.add("short");
-                short.innerHTML = shortDesc;
+                if (shortDesc != undefined) {
+                    short.innerHTML = shortDesc;
+                }
                 row.appendChild(short);
 
                 var linkRow = document.createElement("div");

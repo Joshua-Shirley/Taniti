@@ -132,4 +132,20 @@ section a:hover {
         width: var(--lg);
         font-size: 5rem;
     }
+    ul.quickLinks li a {
+        font-size: 24px;
+        padding-right: 32px;
+    }
+    .welcome {
+        padding: 1rem;
+        width: 975px;
+        margin: 0 auto;
+    }
+    section:not(.title) a {
+        width: 975px;
+        margin: 0 auto;
+    }
+    section .mainImage {
+        height: 500px;
+    }
 }
