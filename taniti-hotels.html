@@ -30,6 +30,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comforter&display=swap" rel="stylesheet">
 
+    <Style>
+        section.list .container {
+            padding: 0;
+        }
+    </Style>
+
+
     <!-- Pre Load Javascripts -->
     <script src="data/hotels.js"></script>
 
@@ -61,20 +68,24 @@
     </header>
 
     <main>
-
-        <h1>Taniti's Best Hotels</h1>
+        <div class="container">
+            <h1>Taniti's Best Hotels</h1>
+        </div>
 
         <section id="filters" class="mb-3">
-            <form name="hotelFilters">
-                <div class="row filters">
-                    <button type="button" name="rating" class="col sort sortRatings" value="ascending">Rating</button>
-                    <button type="button" name="price" class="col sort sortPrices" value="descending">Price</button>
-                    <button type="button" name="location" class="col filter filterLocations" value="closed">Location</button>
-                </div>
-            </form>
+            <div class="container">
+                <form name="hotelFilters">
+                    <div class="row filters">
+                        <button type="button" name="rating" class="col sort sortRatings" value="ascending">Rating</button>
+                        <button type="button" name="price" class="col sort sortPrices" value="descending">Price</button>
+                        <button type="button" name="location" class="col filter filterLocations" value="closed">Location</button>
+                    </div>
+                </form>
+            </div>
         </section>
 
         <section class="list" id="hotels">
+            <div class="container"></div>
         </section>
 
     </main>
