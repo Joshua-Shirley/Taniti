@@ -96,6 +96,10 @@ input[type="checkbox"] {
     background-position: center;
 }
 
+section#filters div.container {
+    position: relative;
+}
+
 div.filterList {
     position: absolute;
     z-index: 10;
@@ -103,7 +107,7 @@ div.filterList {
     color: white;
     width: 250px;
     margin-top: 9px;
-    right: 12px;
+    right: 0px;
 }
 
 .filterList label {

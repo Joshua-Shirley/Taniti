@@ -382,6 +382,7 @@ button.right::after {
     header .container {
         width: var(--lg);
         margin: 0 auto;
+        position: relative;
     }
     header .hamburger {
         display: none;
