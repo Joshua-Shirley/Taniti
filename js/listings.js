@@ -5,7 +5,6 @@ const hotelListings = {
         this.sort("price");
         this.locationDisplay();
         this.buttons();
-        this.target = document.querySelector("#hotels .container");
     },
     sort: function(key) {
         if (Object.keys(hotels[0]).includes(key)) {
@@ -36,8 +35,7 @@ const hotelListings = {
         }
     },
     load: function() {
-        //document.querySelector("#" + this.target + " .container").innerHTML = "";
-        this.target.innerHTML = "";
+        document.getElementById(this.target).innerHTML = "";
         // filter the hotel list
         if (this.activeFilters.length > 0) {
             var arr = hotels.filter(hotel => this.activeFilters.includes(hotel.location));
@@ -53,10 +51,7 @@ const hotelListings = {
         return hotels.findIndex(hotel => hotel.id == id);
     },
     hotelBlock: function(id) {
-        //var target = document.getElementById(this.target);
-        //var target = document.querySelector("#" + this.target + " .container");
-        var target = this.target;
-
+        var target = document.getElementById(this.target);
         var index = this.index(id);
         var hotel = hotels[index];
 
